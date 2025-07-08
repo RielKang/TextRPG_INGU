@@ -26,13 +26,16 @@
                 switch (actionChoice)
                 {
                     case "1":
-                        // 상태 보기
+                        // 상태 보기-------장비효과 적용----------------------------------------------------------------------
+                        var equippedBonus = InventoryManager.Instance.GetEquippedStats();
+
                         Console.WriteLine($"이름: {playerName}" +
                             $"\n레벨: {playerLevel}" +
-                            $"\n공격력: {playerAttack}" +
-                            $"\n방어력: {playerDefense}" +
-                            $"\n체력: {playerHealth}" +
+                            $"\n공격력: {playerAttack}(+{equippedBonus.attack})" +
+                            $"\n방어력: {playerDefense}(+{equippedBonus.defense})" +
+                            $"\n체력: {playerHealth}(+{equippedBonus.hp})" +
                             $"\n골드: {playerGold}");
+                        //----------------------------------------------------------------------------------------------------
                         // 선택지로 나가기 로직
                         Console.WriteLine("0. 나가기");
                         Console.WriteLine("원하시는 행동을 입력해주세요\n>>");
