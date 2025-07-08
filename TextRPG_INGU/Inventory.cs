@@ -48,6 +48,14 @@ namespace TextRPG_INGU
             }
             Console.WriteLine();
             Console.WriteLine("1. 장착관리");
+
+            // 조건부로 합성 옵션 출력
+            if (HasAllSpecialItems())
+            {
+                Console.WriteLine("3. 아이템 합성");
+            }
+
+
             Console.WriteLine( items.Count >0 ? "2. 나가기" : "0. 나가기");
             Console.WriteLine("\n원하시는 행동을 입력해주세요");
             Console.Write(">> ");
@@ -79,7 +87,23 @@ namespace TextRPG_INGU
 
             }
         }
+
         public int Count => items.Count;
         public List<Item> Items => items;
+
+        public bool HasAllSpecialItems()
+        {
+            var specialNames = new List<string>
+            {
+                "찢어진 붉은 깃발 1",
+                "찢어진 붉은 깃발 2",
+                "찢어진 붉은 깃발 3",
+                "찢어진 붉은 깃발 4",
+                "찢어진 붉은 깃발 5"
+            };
+
+            return specialNames.All(name => items.Any(i => i.Name == name));
+        }
+
     }
 }

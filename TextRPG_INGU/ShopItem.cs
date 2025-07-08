@@ -22,5 +22,18 @@ namespace TextRPG_INGU
             Price = price;
             IsPurchased = false;
         }
+
+        public bool IsSpecial { get; }  // 상점 아이템도 특수 아이템 여부 추가
+
+        public ShopItem(string name, string statText, string description, int price, bool isSpecial = false)
+        {
+            Name = name;
+            StatText = statText;
+            Description = description;
+            Price = price;
+            IsPurchased = false;
+            IsSpecial = isSpecial;
+        }
+
     }
 }

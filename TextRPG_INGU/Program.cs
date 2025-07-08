@@ -43,44 +43,58 @@
                         }
                         break;
                     case "2":
-                        // 인벤토리
+                        {// 인벤토리
                         bool inventoryRunning = true; // 인벤토리 루프
-                        while (inventoryRunning)
-                        {
-                            playerInventory.ShowItems();
-                            string invInput = Console.ReadLine();
-                            // 인벤토리 선택지, 아이템이 있다면
-                            if (invInput == "1" && playerInventory.Count > 0)
+                            while (inventoryRunning)
                             {
-                                Console.WriteLine("장착할 아이템의 번호를 입력해주세요.");
-                                // 인벤토리 내부의 아이템 개수만큼 반복
-                                for (int i = 0; i < playerInventory.Count; i++)
+                                playerInventory.ShowItems();//ShowItems 안에서 조건부로 "3. 아이템 합성 출력됨"
+                                string invInput = Console.ReadLine();
+                                // 인벤토리 선택지, 아이템이 있다면
+                                if (invInput == "1" && playerInventory.Count > 0)
                                 {
-                                    Console.WriteLine($"{i + 1}.{playerInventory.Items[i].Name}");
+                                    Console.WriteLine("장착할 아이템의 번호를 입력해주세요.");
+                                    // 인벤토리 내부의 아이템 개수만큼 반복
+                                    for (int i = 0; i < playerInventory.Count; i++)
+                                    {
+                                        Console.WriteLine($"{i + 1}.{playerInventory.Items[i].Name}");
+                                    }
+                                    // 아이템 선택
+                                    int sel;
+                                    if (int.TryParse(Console.ReadLine(), out sel) && sel > 0 && sel <= playerInventory.Count)
+                                    {
+                                        // 아이템 장착 관리
+                                        playerInventory.EquipItem(sel - 1);
+                                        Console.WriteLine($"{playerInventory.Items[sel - 1].Name} 아이템을 장착했습니다.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("잘못된 선택입니다.");
+                                    }
+
+
                                 }
-                                // 아이템 선택
-                                int sel;
-                                if (int.TryParse(Console.ReadLine(), out sel) && sel > 0 && sel <= playerInventory.Count)
+                                // 합성 입력 처리
+                                else if (invInput == "3" && playerInventory.HasAllSpecialItems())
                                 {
-                                    // 아이템 장착 관리
-                                    playerInventory.EquipItem(sel - 1);
-                                    Console.WriteLine($"{playerInventory.Items[sel - 1].Name} 아이템을 장착했습니다.");
+                                    SynthesisManager.TrySynthesize(ref playerGold);
+                                }
+
+
+                                else if ((invInput == "2" && playerInventory.Count > 0) || (invInput == "0" && playerInventory.Count == 0))
+                                {
+                                    Console.WriteLine("이전 선택지로 돌아갑니다.");
+                                    inventoryRunning = false; // 인벤토리 루프 종료
                                 }
                                 else
                                 {
                                     Console.WriteLine("잘못된 선택입니다.");
                                 }
-                            }
-                            else if ((invInput == "2" && playerInventory.Count > 0) || (invInput == "0" && playerInventory.Count == 0))
-                            {
-                                Console.WriteLine("이전 선택지로 돌아갑니다.");
-                                inventoryRunning = false; // 인벤토리 루프 종료
-                            }
-                            else
-                            {
-                                Console.WriteLine("잘못된 선택입니다.");
+                                
+
                             }
                         }
+                        // 합성 입력 처리
+
                         break;
                     case "3":
                         // 상점

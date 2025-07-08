@@ -20,5 +20,18 @@ namespace TextRPG_INGU
             Description = description;
             IsEquipped = false;
         }
+
+        // Item.cs
+        public bool IsSpecial { get; } // 이 아이템이 합성용 특수 아이템인지
+
+        public Item(string name, string statText, string description, bool isSpecial = false)
+        {
+            Name = name;
+            StatText = statText;
+            Description = description;
+            IsEquipped = false;
+            IsSpecial = isSpecial;
+        }
+
     }
 }
