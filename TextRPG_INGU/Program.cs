@@ -13,8 +13,6 @@
             //인벤토리 매니저 생성
             InventoryManager playerInventory = InventoryManager.Instance;
 
-
-
             //소개글 출력
             Console.WriteLine("환영합니다! 이곳은 간단한 텍스트 RPG 게임입니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n이름을 입력해주세요");
             string playerName = Console.ReadLine();
@@ -72,9 +70,7 @@
                                 {
                                     Console.WriteLine("잘못된 선택입니다.");
                                 }
-
                             }
-
                             else if ((invInput == "2" && playerInventory.Count > 0) || (invInput == "0" && playerInventory.Count == 0))
                             {
                                 Console.WriteLine("이전 선택지로 돌아갑니다.");
@@ -84,7 +80,6 @@
                             {
                                 Console.WriteLine("잘못된 선택입니다.");
                             }
-
                         }
                         break;
                     case "3":
@@ -107,8 +102,7 @@
                                         if (buyInput == "0")
                                         {
                                             buying = false; // 상점 루프 종료
-                                            continue;
-                                            
+                                            continue;                      
                                         }
                                         int buyIndex;
                                         if (int.TryParse(buyInput, out buyIndex) && buyIndex > 0 && buyIndex <= Shop.Instance.Items.Count)
@@ -119,26 +113,19 @@
                                         {
                                             Console.WriteLine("잘못된 입력입니다.");
                                         }
-
                                     }
-                                    
                                     break;
                                 case "0":
                                     shopRunning = false; // 상점 루프 종료
                                     break;
                             }
-
                         }
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 시도해주세요.");
                         break;
-
                 }
             }
-            
-            
-
         }
     }
 }
