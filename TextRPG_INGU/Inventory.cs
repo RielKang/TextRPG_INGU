@@ -60,15 +60,24 @@ namespace TextRPG_INGU
                 Console.WriteLine("잘못된 선택입니다.");
                 return;
             }
-            // 모든 아이템의 장착 해제
-            foreach (var item in items)
+            // 이미 장착된 아이템을 다시 선택하면 장착 해제
+            if (items[index].IsEquipped)
             {
-                item.IsEquipped = false;
+                items[index].IsEquipped = false;
+                Console.WriteLine($"{items[index].Name}의 장착을 해제했습니다.");
             }
-            // 선택 아이템 장착
-            items[index].IsEquipped = true;
-            Console.WriteLine($"{items[index].Name}을 장착했습니다");
+            else 
+            {
+                // 모든 아이템의 장착 해제
+                foreach (var item in items)
+                {
+                    item.IsEquipped = false;
+                }
+                // 선택 아이템 장착
+                items[index].IsEquipped = true;
+                Console.WriteLine($"{items[index].Name}을 장착했습니다");
 
+            }
         }
         public int Count => items.Count;
         public List<Item> Items => items;
