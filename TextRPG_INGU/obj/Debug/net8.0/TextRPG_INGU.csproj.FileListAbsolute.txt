@@ -1,0 +1,15 @@
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\bin\Debug\net8.0\TextRPG_INGU.exe
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\bin\Debug\net8.0\TextRPG_INGU.deps.json
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\bin\Debug\net8.0\TextRPG_INGU.runtimeconfig.json
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\bin\Debug\net8.0\TextRPG_INGU.dll
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\bin\Debug\net8.0\TextRPG_INGU.pdb
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.GeneratedMSBuildEditorConfig.editorconfig
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.AssemblyInfoInputs.cache
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.AssemblyInfo.cs
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.csproj.CoreCompileInputs.cache
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.sourcelink.json
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.dll
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\refint\TextRPG_INGU.dll
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.pdb
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\TextRPG_INGU.genruntimeconfig.cache
+D:\스파르타 유니티 11기\TextRPG_INGU\TextRPG_INGU\TextRPG_INGU\obj\Debug\net8.0\ref\TextRPG_INGU.dll
