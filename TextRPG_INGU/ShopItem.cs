@@ -25,7 +25,7 @@ namespace TextRPG_INGU
 
         public bool IsSpecial { get; }  // 상점 아이템도 특수 아이템 여부 추가
 
-        public ShopItem(string name, string statText, string description, int price, bool isSpecial = false)
+        public ShopItem(string name, string statText, string description, int price, bool isSpecial = false, string equipType = "")
         {
             Name = name;
             StatText = statText;

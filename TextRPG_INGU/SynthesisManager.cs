@@ -41,7 +41,7 @@ namespace TextRPG_INGU
             }
 
             // 결과물 지급
-            inv.AddItem(new Item("혁명의 붉은 깃발", "공격력 +40", "구닥다리 봉건제를 유지하는 혁명의 적들을 깨부수는 깃발.", false));
+            inv.AddItem(new Item("혁명의 붉은 깃발", "공격력 +40 / 방어력 +40 / 체력 +40 ", "구닥다리 봉건제를 유지하는 혁명의 적들을 깨부수는 깃발.", "무기",false));
             Console.WriteLine("합성이 완료되었습니다! '혁명의 붉은 깃발'을 획득했습니다.");
         }
 

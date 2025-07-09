@@ -23,12 +23,13 @@ namespace TextRPG_INGU
 
         // Item.cs
         public bool IsSpecial { get; } // 이 아이템이 합성용 특수 아이템인지
-
-        public Item(string name, string statText, string description, bool isSpecial = false)
+        public string EquipType { get; } // 아이템의 장착 타입 (무기, 방어구 등)
+        public Item(string name, string statText, string description, string equipType = "", bool isSpecial = false)
         {
             Name = name;
             StatText = statText;
             Description = description;
+            EquipType = equipType;
             IsEquipped = false;
             IsSpecial = isSpecial;
         }

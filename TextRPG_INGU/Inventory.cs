@@ -9,6 +9,7 @@ namespace TextRPG_INGU
 {
     internal class InventoryManager
     {
+        //싱글턴 패턴
         private static InventoryManager instance;
         public static InventoryManager Instance
         {
@@ -21,6 +22,7 @@ namespace TextRPG_INGU
                 return instance;
             }
         }
+
         //아이템 리스트 초기화
         private List<Item> items = new List<Item>();
         //아이템 추가
@@ -28,6 +30,34 @@ namespace TextRPG_INGU
         { 
             items.Add(item);
         }
+        // 아이템 효과-----------------------------------------------------------------------------------------------
+        public (int attack, int defense, int hp) GetEquippedStats()
+        {
+            int atk = 0, def = 0, hp = 0;
+
+            foreach (var item in items.Where(i => i.IsEquipped))
+            {
+                if (item.StatText.Contains("공격력"))
+                    atk += ExtractValue(item.StatText);
+
+                if (item.StatText.Contains("방어력"))
+                    def += ExtractValue(item.StatText);
+
+                if (item.StatText.Contains("체력"))
+                    hp += ExtractValue(item.StatText);
+            }
+
+            return (atk, def, hp);
+        }
+
+        // 문자열에서 +숫자 추출
+        private int ExtractValue(string statText)
+        {
+            var match = System.Text.RegularExpressions.Regex.Match(statText, @"\+(\d+)");
+            return match.Success ? int.Parse(match.Groups[1].Value) : 0;
+        }
+        //----------------------------------------------------------------------------------------------------
+
         //아이템 관리
         public void ShowItems()
         { 
@@ -68,6 +98,8 @@ namespace TextRPG_INGU
                 Console.WriteLine("잘못된 선택입니다.");
                 return;
             }
+
+            var selectedItem = items[index];
             // 이미 장착된 아이템을 다시 선택하면 장착 해제
             if (items[index].IsEquipped)
             {
@@ -76,7 +108,7 @@ namespace TextRPG_INGU
             }
             else 
             {
-                // 모든 아이템의 장착 해제
+                /*// 모든 아이템의 장착 해제
                 foreach (var item in items)
                 {
                     item.IsEquipped = false;
@@ -84,6 +116,16 @@ namespace TextRPG_INGU
                 // 선택 아이템 장착
                 items[index].IsEquipped = true;
                 Console.WriteLine($"{items[index].Name}을 장착했습니다");
+
+                foreach (var item in items)
+                {
+                    if (item.EquipType == selectedItem.EquipType)
+                        item.IsEquipped = false;
+                }*/
+
+                selectedItem.IsEquipped = true;
+                Console.WriteLine($"{selectedItem.Name}을 장착했습니다.");
+
 
             }
         }
