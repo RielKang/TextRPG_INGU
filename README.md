@@ -60,5 +60,13 @@
 ---
 
 ## 🖼️ (선택사항) 게임 스크린샷
+![게임 소개 화면](https://github.com/RielKang/TextRPG_INGU/blob/main/images/start_screen.png)
 ![게임 시작 화면](https://github.com/RielKang/TextRPG_INGU/blob/main/images/basic_stat_screen.png)
-
+![인벤토리 화면](https://github.com/RielKang/TextRPG_INGU/blob/main/images/inventory_screen.png)
+![장착관리 1](https://github.com/RielKang/TextRPG_INGU/blob/main/images/inventory_equipmanage_screen.png)
+![장착관리 2](https://github.com/RielKang/TextRPG_INGU/blob/main/images/inventory%20equipmanage2_screen.png)
+![스탯 화면](https://github.com/RielKang/TextRPG_INGU/blob/main/images/stat_screen.png)
+![장비착용시 스탯창](https://github.com/RielKang/TextRPG_INGU/blob/main/images/bonus_stat_screen.png)
+![휴식 화면](https://github.com/RielKang/TextRPG_INGU/blob/main/images/rest_screen.png)
+![상점 진입 화면](https://github.com/RielKang/TextRPG_INGU/blob/main/images/shop_enter_screen.png)
+![상점 구매 화면](https://github.com/RielKang/TextRPG_INGU/blob/main/images/shop_purchace_screen.png)
