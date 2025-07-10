@@ -66,6 +66,10 @@
                                 case "0":
                                     shopRunning = false; // 상점 루프 종료
                                     break;
+                                default:
+                                    Console.WriteLine("잘못된 입력입니다.");
+                                    break;
+
                             }
                         }
                         break;
@@ -100,7 +104,18 @@
                 int buyIndex;
                 if (int.TryParse(buyInput, out buyIndex) && buyIndex > 0 && buyIndex <= Shop.Instance.Items.Count)
                 {
-                    Shop.Instance.TryPurchase(buyIndex - 1, ref playerGold, InventoryManager.Instance);
+                    bool success = Shop.Instance.TryPurchase(buyIndex - 1, ref playerGold, InventoryManager.Instance);
+                    if (success)
+                    {
+                        Console.WriteLine("Enter를 누르면 다음 화면으로 넘어갑니다.");
+                        Console.WriteLine($"아이템 {Shop.Instance.Items[buyIndex - 1].Name}을(를) 구매했습니다.");
+                        Console.ReadLine(); // 구매 후 잠시 대기
+                        
+                       
+
+                    }
+
+                    //Shop.Instance.TryPurchase(buyIndex - 1, ref playerGold, InventoryManager.Instance);
                 }
                 else
                 {

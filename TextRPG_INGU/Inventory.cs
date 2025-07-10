@@ -137,11 +137,11 @@ namespace TextRPG_INGU
         {
             var specialNames = new List<string>
             {
-                "찢어진 붉은 깃발 1",
-                "찢어진 붉은 깃발 2",
-                "찢어진 붉은 깃발 3",
-                "찢어진 붉은 깃발 4",
-                "찢어진 붉은 깃발 5"
+                "찢어진 붉은 망토",
+                "부러진 붉은 깃창",
+                "붉은 가죽 갑옷",
+                "빛바랜 붉은 샌들",
+                "구멍난 붉은 두건"
             };
 
             return specialNames.All(name => items.Any(i => i.Name == name));
