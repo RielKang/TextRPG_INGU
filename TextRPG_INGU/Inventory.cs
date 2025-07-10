@@ -108,21 +108,7 @@ namespace TextRPG_INGU
             }
             else 
             {
-                /*// 모든 아이템의 장착 해제
-                foreach (var item in items)
-                {
-                    item.IsEquipped = false;
-                }
-                // 선택 아이템 장착
-                items[index].IsEquipped = true;
-                Console.WriteLine($"{items[index].Name}을 장착했습니다");
-
-                foreach (var item in items)
-                {
-                    if (item.EquipType == selectedItem.EquipType)
-                        item.IsEquipped = false;
-                }*/
-
+                
                 selectedItem.IsEquipped = true;
                 Console.WriteLine($"{selectedItem.Name}을 장착했습니다.");
 
