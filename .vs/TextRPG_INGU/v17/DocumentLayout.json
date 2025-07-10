@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:1:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|solutionrelative:textrpg_ingu\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|d:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\textrpg_ingu\\textrpg_ingu\\textrpg_ingu\\shopitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|solutionrelative:textrpg_ingu\\shopitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|d:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\textrpg_ingu\\textrpg_ingu\\textrpg_ingu\\synthesismanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|solutionrelative:textrpg_ingu\\synthesismanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|d:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\textrpg_ingu\\textrpg_ingu\\textrpg_ingu\\shopitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|solutionrelative:textrpg_ingu\\shopitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{858322FD-2A1E-4001-9497-F75ABAB9B133}|TextRPG_INGU\\TextRPG_INGU.csproj|d:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\textrpg_ingu\\textrpg_ingu\\textrpg_ingu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,15 +46,16 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ShopItem.cs",
               "DocumentMoniker": "D:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\TextRPG_INGU\\TextRPG_INGU\\TextRPG_INGU\\ShopItem.cs",
               "RelativeDocumentMoniker": "TextRPG_INGU\\ShopItem.cs",
               "ToolTip": "D:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\TextRPG_INGU\\TextRPG_INGU\\TextRPG_INGU\\ShopItem.cs",
               "RelativeToolTip": "TextRPG_INGU\\ShopItem.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T06:43:03.068Z"
+              "WhenOpened": "2025-07-09T06:43:03.068Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -70,15 +71,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "SynthesisManager.cs",
               "DocumentMoniker": "D:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\TextRPG_INGU\\TextRPG_INGU\\TextRPG_INGU\\SynthesisManager.cs",
               "RelativeDocumentMoniker": "TextRPG_INGU\\SynthesisManager.cs",
               "ToolTip": "D:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\TextRPG_INGU\\TextRPG_INGU\\TextRPG_INGU\\SynthesisManager.cs",
               "RelativeToolTip": "TextRPG_INGU\\SynthesisManager.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAAwCwAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwCwAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T06:19:57.343Z"
+              "WhenOpened": "2025-07-08T06:19:57.343Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -88,7 +90,7 @@
               "RelativeDocumentMoniker": "TextRPG_INGU\\Shop.cs",
               "ToolTip": "D:\\\uC2A4\uD30C\uB974\uD0C0 \uC720\uB2C8\uD2F0 11\uAE30\\TextRPG_INGU\\TextRPG_INGU\\TextRPG_INGU\\Shop.cs",
               "RelativeToolTip": "TextRPG_INGU\\Shop.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAuwG8AAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG8AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-08T01:12:06.75Z",
               "EditorCaption": ""
