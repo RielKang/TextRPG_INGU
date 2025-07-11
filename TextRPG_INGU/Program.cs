@@ -10,19 +10,26 @@
             int playerDefense = 5;
             int playerHealth = 100;
             int playerGold = 1500;
+            
+
             //인벤토리 매니저 생성
             InventoryManager playerInventory = InventoryManager.Instance;
 
             //소개글 출력
             Console.WriteLine("환영합니다! 이곳은 간단한 텍스트 RPG 게임입니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n이름을 입력해주세요");
             string playerName = Console.ReadLine();
+            Console.WriteLine($"안녕하세요, {playerName}님! 모험을 시작하기전 직업을 선택해주세요.\n");
+            Console.WriteLine("1. 전사\n2. 마법사\n3. 도적\n 원하시는 행동을 선택해주세요.\n>>");
+            string jobChoice = Console.ReadLine();
+            Console.WriteLine(); // 줄바꿈
 
             bool isRunning = true; // 게임 루프
             while (isRunning)
             {
                 //진입 선택지 출력
-                Console.WriteLine("1. 상태보기\n2. 인벤토리\n3. 상점\n4. 휴식 \n5. 종료\n \n원하시는 행동을 입력해주세요");
+                Console.WriteLine("1. 상태보기\n2. 인벤토리\n3. 상점\n4. 휴식 \n5. 종료\n \n원하시는 행동을 입력해주세요\n>>");
                 string actionChoice = Console.ReadLine();
+                Console.WriteLine(); // 줄바꿈
                 switch (actionChoice)
                 {
                     case "1":
@@ -30,6 +37,7 @@
                         var equippedBonus = InventoryManager.Instance.GetEquippedStats();
 
                         Console.WriteLine($"이름: {playerName}" +
+                            $"\n직업: {jobChoice}" +
                             $"\n레벨: {playerLevel}" +
                             $"\n공격력: {playerAttack}(+{equippedBonus.attack})" +
                             $"\n방어력: {playerDefense}(+{equippedBonus.defense})" +
@@ -37,23 +45,32 @@
                             $"\n골드: {playerGold}");
                         
                         // 선택지로 나가기 로직
-                        Console.WriteLine("0. 나가기");
-                        Console.WriteLine("원하시는 행동을 입력해주세요\n>>");
-                        if (Console.ReadLine() == "0")
+                        bool goBack = true; // 이전 선택지로 돌아가기 여부
+                        while (goBack)
                         {
-                            Console.WriteLine("이전 선택지로 돌아갑니다.");
-                            break;
+                            Console.WriteLine("0. 나가기");
+                            Console.WriteLine("원하시는 행동을 입력해주세요\n>>");
+
+                            string input = Console.ReadLine();
+                            if (input == "0")
+                            {
+                                Console.WriteLine("이전 선택지로 돌아갑니다.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("잘못된 입력입니다. 다시 시도해주세요.");
+                            }
                         }
                         break;
-                    case "2": //인벤토리 루프
+                    case "2": 
                         HandleInventoryLoop(ref playerGold, playerInventory);
 
                         break;
                     case "3":
-                        // 상점
                         Console.WriteLine("상점에 들어갑니다.");
-                        // 상점 로직 추가
-                        bool shopRunning = true; // 상점 루프
+                        
+                        bool shopRunning = true;
                         while (shopRunning)
                         {
                             Shop.Instance.ShowShop(playerGold);
@@ -61,10 +78,10 @@
                             switch(shopInput)
                             {
                                 case "1":
-                                    HandlePurchaseLoop(ref playerGold);
+                                    HandlePurchaselectItemoop(ref playerGold);
                                     break;
                                 case "0":
-                                    shopRunning = false; // 상점 루프 종료
+                                    shopRunning = false;
                                     break;
                                 default:
                                     Console.WriteLine("잘못된 입력입니다.");
@@ -74,13 +91,10 @@
                         }
                         break;
                     case "4":
-                        // 휴식
                         HandleRest(ref playerHealth, ref playerGold, 100, 1000);
                         break;
                     case "5":
-                        // 게임 종료
                         return;
-                       
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 시도해주세요.");
                         break;
@@ -88,7 +102,7 @@
             }
         }
         // 상점 구매 루프 메서드
-        static void HandlePurchaseLoop(ref int playerGold)
+        static void HandlePurchaselectItemoop(ref int playerGold)
         {
             bool buying = true;
             while (buying)
@@ -109,13 +123,9 @@
                     {
                         Console.WriteLine("Enter를 누르면 다음 화면으로 넘어갑니다.");
                         Console.WriteLine($"아이템 {Shop.Instance.Items[buyIndex - 1].Name}을(를) 구매했습니다.");
-                        Console.ReadLine(); // 구매 후 잠시 대기
-                        
-                       
-
+                        Console.ReadLine();
+                        Console.WriteLine();
                     }
-
-                    //Shop.Instance.TryPurchase(buyIndex - 1, ref playerGold, InventoryManager.Instance);
                 }
                 else
                 {
@@ -126,7 +136,7 @@
         static void HandleInventoryLoop(ref int playerGold, InventoryManager playerInventory)
         {
             // 인벤토리
-                bool inventoryRunning = true; // 인벤토리 루프
+                bool inventoryRunning = true;
                 while (inventoryRunning)
                 {
                     playerInventory.ShowItems();//ShowItems 안에서 조건부로 "3. 아이템 합성 출력됨"
@@ -141,12 +151,12 @@
                             Console.WriteLine($"{i + 1}.{playerInventory.Items[i].Name}");
                         }
                         // 아이템 선택
-                        int sel;
-                        if (int.TryParse(Console.ReadLine(), out sel) && sel > 0 && sel <= playerInventory.Count)
+                        int selectItem;
+                        if (int.TryParse(Console.ReadLine(), out selectItem) && selectItem > 0 && selectItem <= playerInventory.Count)
                         {
                             // 아이템 장착 관리
-                            playerInventory.EquipItem(sel - 1);
-                            Console.WriteLine($"{playerInventory.Items[sel - 1].Name} 아이템을 장착했습니다.");
+                            playerInventory.EquipItem(selectItem - 1);
+                            Console.WriteLine($"{playerInventory.Items[selectItem - 1].Name} 아이템을 장착했습니다.");
                         }
                         else
                         {
@@ -171,10 +181,8 @@
                     {
                         Console.WriteLine("잘못된 선택입니다.");
                     }
-
-
                 }
-            
+          
             
         }
         static void HandleRest(ref int playerHealth, ref int playerGold, int maxHealth, int restCost)

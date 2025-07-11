@@ -99,7 +99,7 @@ namespace TextRPG_INGU
                 return;
             }
 
-            var selectedItem = items[index];
+            var selectItemectedItem = items[index];
             // 이미 장착된 아이템을 다시 선택하면 장착 해제
             if (items[index].IsEquipped)
             {
@@ -109,8 +109,8 @@ namespace TextRPG_INGU
             else 
             {
                 
-                selectedItem.IsEquipped = true;
-                Console.WriteLine($"{selectedItem.Name}을 장착했습니다.");
+                selectItemectedItem.IsEquipped = true;
+                Console.WriteLine($"{selectItemectedItem.Name}을 장착했습니다.");
 
 
             }
