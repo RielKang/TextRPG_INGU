@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_INGU.Data;
+using TextRPG_INGU.Database;
 
-namespace TextRPG_INGU
+namespace TextRPG_INGU.Managers
 {
     
     internal class Shop
@@ -77,6 +79,10 @@ namespace TextRPG_INGU
             Console.WriteLine(">> ");
         }
 
-        public List<ShopItem> Items => shopItems;
+        public List<ShopItem> Items
+        {
+            get { return shopItems; }
+        }
+            
     }
 }

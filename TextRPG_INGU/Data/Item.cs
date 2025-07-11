@@ -4,23 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_INGU
+namespace TextRPG_INGU.Data
 {
-    internal class Item
+    public class Item
     {
         public string Name { get; }
         public string Description { get; }
         public string StatText { get; }
         public bool IsEquipped { get; set; }
-
-        public Item(string name, string statText, string description)
-        {
-            Name = name;
-            StatText = statText;
-            Description = description;
-            IsEquipped = false;
-        }
-
+                
         // Item.cs
         public bool IsSpecial { get; } // 이 아이템이 합성용 특수 아이템인지
         public string EquipType { get; } // 아이템의 장착 타입 (무기, 방어구 등)

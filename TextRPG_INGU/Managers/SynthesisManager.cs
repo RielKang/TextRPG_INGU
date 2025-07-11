@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_INGU.Database;
 
-namespace TextRPG_INGU
+namespace TextRPG_INGU.Managers
 {
     internal class SynthesisManager
     {

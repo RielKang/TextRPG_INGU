@@ -1,11 +1,15 @@
-﻿namespace TextRPG_INGU
+﻿using System.Numerics;
+using TextRPG_INGU.Data;
+using TextRPG_INGU.Managers;
+
+namespace TextRPG_INGU.UI
 {
     internal class MainProgram
     {
         static void Main(string[] args)
         {
             // 초기 설정 값
-            int playerLevel = 1;
+            
             int playerAttack = 10;
             int playerDefense = 5;
             int playerHealth = 100;
@@ -22,6 +26,31 @@
             Console.WriteLine("1. 전사\n2. 마법사\n3. 도적\n 원하시는 행동을 선택해주세요.\n>>");
             string jobChoice = Console.ReadLine();
             Console.WriteLine(); // 줄바꿈
+            string jobText = " "; // 직업 텍스트 초기화
+            Player player = new Player(playerName, jobChoice); // 플레이어 객체 생성
+            // 직업 선택지 처리
+            switch (jobChoice)
+            {
+                case "1":
+                    jobText = "전사";
+                    player.Attack += 5; // 전사 공격력 증가
+                    break;
+                case "2":
+                    jobText = "마법사";
+                    player.Attack += 3; // 마법사 공격력 증가
+                    playerDefense += 2; // 마법사 방어력 증가
+                    break;
+                case "3":
+                    jobText = "도적";
+                    player.Attack += 4; // 도적 공격력 증가
+                    playerDefense += 1; // 도적 방어력 증가
+                    break;
+                default:
+                    Console.WriteLine("잘못된 선택입니다. 기본 직업인 '전사'로 설정합니다.");
+                    jobText = "무직";
+                    break;
+            }
+            
 
             bool isRunning = true; // 게임 루프
             while (isRunning)
@@ -38,11 +67,11 @@
 
                         Console.WriteLine($"이름: {playerName}" +
                             $"\n직업: {jobChoice}" +
-                            $"\n레벨: {playerLevel}" +
-                            $"\n공격력: {playerAttack}(+{equippedBonus.attack})" +
-                            $"\n방어력: {playerDefense}(+{equippedBonus.defense})" +
-                            $"\n체력: {playerHealth}(+{equippedBonus.hp})" +
-                            $"\n골드: {playerGold}");
+                            $"\n레벨: {player.Level}" +
+                            $"\n공격력: {player.Attack}(+{equippedBonus.attack})" +
+                            $"\n방어력: {player.Defense}(+{equippedBonus.defense})" +
+                            $"\n체력: {player.Health}(+{equippedBonus.hp})" +
+                            $"\n골드: {player.Gold}");
                         
                         // 선택지로 나가기 로직
                         bool goBack = true; // 이전 선택지로 돌아가기 여부
@@ -64,7 +93,7 @@
                         }
                         break;
                     case "2": 
-                        HandleInventoryLoop(ref playerGold, playerInventory);
+                        HandleInventoryLoop(ref playerGold, playerInventory, player);
 
                         break;
                     case "3":
@@ -133,7 +162,7 @@
                 }
             }
         }
-        static void HandleInventoryLoop(ref int playerGold, InventoryManager playerInventory)
+        static void HandleInventoryLoop(ref int playerGold, InventoryManager playerInventory, Player player)
         {
             // 인벤토리
                 bool inventoryRunning = true;
@@ -157,7 +186,8 @@
                             // 아이템 장착 관리
                             playerInventory.EquipItem(selectItem - 1);
                             Console.WriteLine($"{playerInventory.Items[selectItem - 1].Name} 아이템을 장착했습니다.");
-                        }
+                            player.ApplyEquippedStats();
+                    }
                         else
                         {
                             Console.WriteLine("잘못된 선택입니다.");
@@ -172,7 +202,7 @@
                     }
 
 
-                    else if ((invInput == "2" && playerInventory.Count > 0) || (invInput == "0" && playerInventory.Count == 0))
+                    else if (invInput == "2" && playerInventory.Count > 0 || invInput == "0" && playerInventory.Count == 0)
                     {
                         Console.WriteLine("이전 선택지로 돌아갑니다.");
                         inventoryRunning = false; // 인벤토리 루프 종료

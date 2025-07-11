@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_INGU
+namespace TextRPG_INGU.Data
 {
     
-    internal class ShopItem
+    public class ShopItem
     {
         public string Name { get; }
         public string StatText { get; }

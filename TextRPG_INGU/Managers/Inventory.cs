@@ -4,10 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_INGU.Data;
 
-namespace TextRPG_INGU
+namespace TextRPG_INGU.Managers
 {
-    internal class InventoryManager
+    public class InventoryManager
     {
         //싱글턴 패턴
         private static InventoryManager instance;
@@ -114,6 +115,7 @@ namespace TextRPG_INGU
 
 
             }
+
         }
 
         public int Count => items.Count;
