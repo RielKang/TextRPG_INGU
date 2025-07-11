@@ -10,10 +10,11 @@ namespace TextRPG_INGU.UI
         {
             // 초기 설정 값
             
-            int playerAttack = 10;
-            int playerDefense = 5;
-            int playerHealth = 100;
-            int playerGold = 1500;
+            
+
+            
+            
+            //int playe.Gold = 1500;
             
 
             //인벤토리 매니저 생성
@@ -37,13 +38,13 @@ namespace TextRPG_INGU.UI
                     break;
                 case "2":
                     jobText = "마법사";
-                    player.Attack += 3; // 마법사 공격력 증가
-                    playerDefense += 2; // 마법사 방어력 증가
+                    player.Attack += 8; // 마법사 공격력 증가
+                    player.Defense -= 2; // 마법사 방어력 감소
                     break;
                 case "3":
                     jobText = "도적";
                     player.Attack += 4; // 도적 공격력 증가
-                    playerDefense += 1; // 도적 방어력 증가
+                    player.Defense -= 1; // 도적 방어력 감소
                     break;
                 default:
                     Console.WriteLine("잘못된 선택입니다. 기본 직업인 '전사'로 설정합니다.");
@@ -93,7 +94,7 @@ namespace TextRPG_INGU.UI
                         }
                         break;
                     case "2": 
-                        HandleInventoryLoop(ref playerGold, playerInventory, player);
+                        HandleInventoryLoop( playerInventory, player);
 
                         break;
                     case "3":
@@ -102,12 +103,12 @@ namespace TextRPG_INGU.UI
                         bool shopRunning = true;
                         while (shopRunning)
                         {
-                            Shop.Instance.ShowShop(playerGold);
+                            Shop.Instance.ShowShop(player);
                             string shopInput = Console.ReadLine();
                             switch(shopInput)
                             {
                                 case "1":
-                                    HandlePurchaselectItemoop(ref playerGold);
+                                    HandlePurchaselectItemoop(player);
                                     break;
                                 case "0":
                                     shopRunning = false;
@@ -120,7 +121,7 @@ namespace TextRPG_INGU.UI
                         }
                         break;
                     case "4":
-                        HandleRest(ref playerHealth, ref playerGold, 100, 1000);
+                        HandleRest(ref player);
                         break;
                     case "5":
                         return;
@@ -131,12 +132,12 @@ namespace TextRPG_INGU.UI
             }
         }
         // 상점 구매 루프 메서드
-        static void HandlePurchaselectItemoop(ref int playerGold)
+        static void HandlePurchaselectItemoop(Player player)
         {
             bool buying = true;
             while (buying)
             {
-                Shop.Instance.ShowShopForPurchase(playerGold);
+                Shop.Instance.ShowShopForPurchase(player);
                 string buyInput = Console.ReadLine();
                 if (buyInput == "0")
                 {
@@ -147,7 +148,7 @@ namespace TextRPG_INGU.UI
                 int buyIndex;
                 if (int.TryParse(buyInput, out buyIndex) && buyIndex > 0 && buyIndex <= Shop.Instance.Items.Count)
                 {
-                    bool success = Shop.Instance.TryPurchase(buyIndex - 1, ref playerGold, InventoryManager.Instance);
+                    bool success = Shop.Instance.TryPurchase(buyIndex - 1, player, InventoryManager.Instance);
                     if (success)
                     {
                         Console.WriteLine("Enter를 누르면 다음 화면으로 넘어갑니다.");
@@ -162,7 +163,7 @@ namespace TextRPG_INGU.UI
                 }
             }
         }
-        static void HandleInventoryLoop(ref int playerGold, InventoryManager playerInventory, Player player)
+        static void HandleInventoryLoop(InventoryManager playerInventory, Player player)
         {
             // 인벤토리
                 bool inventoryRunning = true;
@@ -198,7 +199,7 @@ namespace TextRPG_INGU.UI
                     // 합성 입력 처리
                     else if (invInput == "3" && playerInventory.HasAllSpecialItems())
                     {
-                        SynthesisManager.TrySynthesize(ref playerGold);
+                        SynthesisManager.TrySynthesize(player);
                     }
 
 
@@ -215,7 +216,7 @@ namespace TextRPG_INGU.UI
           
             
         }
-        static void HandleRest(ref int playerHealth, ref int playerGold, int maxHealth, int restCost)
+        static void HandleRest(ref Player player,int restCost = 1000)
         {
                        
             bool restRunning = true;
@@ -228,16 +229,16 @@ namespace TextRPG_INGU.UI
                 switch (restChoice)
                 {
                     case "1":
-                        if (playerGold < restCost)
+                        if (player.Gold < restCost)
                         {
                             Console.WriteLine("골드가 부족하여 휴식할 수 없습니다.");
                             return;
                         }
-                        if (playerHealth < maxHealth)
+                        if (player.Health < player.MaxHealth)
                         {
-                            playerGold -= restCost; // 골드 차감
-                            playerHealth = maxHealth; // 체력 회복
-                            Console.WriteLine($"휴식을 통해 체력을 회복했습니다.\n골드 {restCost} 차감 \n현재 체력: {playerHealth}/{maxHealth}");
+                            player.Gold -= restCost; // 골드 차감
+                            player.Health = player.MaxHealth; // 체력 회복
+                            Console.WriteLine($"휴식을 통해 체력을 회복했습니다.\n골드 {restCost} 차감 \n현재 체력: {player.Health}/{player.MaxHealth}");
                         }
                         else
                         {

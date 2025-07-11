@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_INGU.Data;
 using TextRPG_INGU.Database;
 
 namespace TextRPG_INGU.Managers
 {
     internal class SynthesisManager
     {
-        public static void TrySynthesize(ref int playerGold)
+        public static void TrySynthesize(Player player)
         {
             int synthesisCost = 500;
             var inv = InventoryManager.Instance;
@@ -23,14 +24,14 @@ namespace TextRPG_INGU.Managers
                 return;
             }
 
-            if (playerGold < synthesisCost)
+            if (player.Gold < synthesisCost)
             {
                 Console.WriteLine("골드가 부족합니다. 합성에는 500G가 필요합니다.");
                 return;
             }
 
             // 골드 차감
-            playerGold -= synthesisCost;
+            player.Gold -= synthesisCost;
 
             // 특수 아이템 제거
             foreach (var item in synthesisItems)

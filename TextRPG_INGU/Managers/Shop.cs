@@ -30,9 +30,9 @@ namespace TextRPG_INGU.Managers
             shopItems = ShopItemDatabase.LoadShopItems(); // 데이터베이스에서 아이템 로딩
         }
 
-        public void ShowShop(int playerGold)
+        public void ShowShop(Player player)
         {
-            Console.WriteLine($"[보유 골드] {playerGold}G\n[아이템 목록]");
+            Console.WriteLine($"[보유 골드] {player.Gold}G\n[아이템 목록]");
             for (int i = 0; i < shopItems.Count; i++)
             {
                 var item = shopItems[i];
@@ -47,14 +47,14 @@ namespace TextRPG_INGU.Managers
 
         }
 
-        public bool TryPurchase(int index, ref int playerGold, InventoryManager inventory)
+        public bool TryPurchase(int index, Player player, InventoryManager inventory)
         {
             if (index < 0 || index >= shopItems.Count) return false;
 
             var item = shopItems[index];
-            if (item.IsPurchased || playerGold < item.Price) return false;
+            if (item.IsPurchased || player.Gold < item.Price) return false;
 
-            playerGold -= item.Price;
+            player.Gold -= item.Price;
             item.IsPurchased = true;
 
             var newItem = new Item(item.Name, item.StatText, item.Description, item.EquipType, item.IsSpecial);
@@ -63,9 +63,9 @@ namespace TextRPG_INGU.Managers
             Console.WriteLine($"{item.Name}을 구매했습니다.");
             return true;
         }
-        public void ShowShopForPurchase(int playerGold)
+        public void ShowShopForPurchase(Player player)
         {
-            Console.WriteLine($"[보유 골드] {playerGold}G\n[아이템 구매 목록]");
+            Console.WriteLine($"[보유 골드] {player.Gold}G\n[아이템 구매 목록]");
 
             for (int i = 0; i < shopItems.Count; i++)
             {
